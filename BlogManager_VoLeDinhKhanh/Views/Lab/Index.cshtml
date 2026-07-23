@@ -1,8 +1,41 @@
 <h1> thử nghiệm C# và LINQ </h1>
-<p> số bài đã xuất bản : <strong>@ViewBag.SoDaXuatBan </strong></p>
-<ul>
-@foreach (var tieuDe in ViewBag.TieuDe)
+<p> số bài đã xuất bản : <strong>@ViewBag.SoDaXuatBan</strong></p>
+<p> tổng số lượt xem tất cả bài viết : <strong>@ViewBag.TongLuotXem</strong></p>
+<h2> bài đã xuất bản (sắp xếp theo lượt xem giảm dần)</h2>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Tiêu đề</th>
+            <th>Tác giả</th>
+            <th>Lượt xem</th>
+        </tr>
+    </thead>
+    <tbody>
+    @foreach (var bai in ViewBag.BaiVietDaXuatBan)
+    {
+        <tr>
+            <td>@bai.Title <span class="badge bg-secondary">@bai.DanhGia()</span></td>
+            <td>@bai.Author</td>
+            <td>@bai.ViewCount</td>
+        </tr>
+    }
+    </tbody>
+</table>
+@if (ViewBag.BaiVietNhieuLuotXemNhat != null)
 {
-    <li>@tieuDe</li>
+    <h2> bài viết có nhiều lượt xem nhất </h2>
+    <p><strong>@ViewBag.BaiVietNhieuLuotXemNhat.Title</strong> - @ViewBag.BaiVietNhieuLuotXemNhat.Author (@ViewBag.BaiVietNhieuLuotXemNhat.ViewCount lượt xem)</p>
 }
-</ul>
+
+@if (ViewBag.Top3BaiViet != null)
+{
+    <h2> top 3 bài viết nhiều lượt xem nhất </h2>
+    <ol>
+    @foreach (var bai in ViewBag.Top3BaiViet)
+    {
+        <li>
+            <strong>@bai.Title</strong> - @bai.Author (@bai.ViewCount lượt xem)
+        </li>
+    }
+    </ol>
+}
