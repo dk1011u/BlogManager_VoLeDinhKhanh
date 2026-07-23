@@ -8,6 +8,8 @@ public class LabController : Controller
         var baiViet = new List<Post>
         {
             new Post {Id = 1, Title = "C# cơ bản", IsPublished = true},
+            new Post {Id = 1, Title = "C# cơ bản", IsPublished = true},
+            new Post {Id = 1, Title = "C# cơ bản", IsPublished = true},
             new Post {Id = 2, Title = "MVC nhập môn", IsPublished = false},
             new Post {Id = 3, Title = "EF core", IsPublished = true},
         };
